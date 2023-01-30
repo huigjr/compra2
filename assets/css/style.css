@@ -1,0 +1,76 @@
+/******************************/
+/*        GENERAL CSS         */
+/******************************/
+
+*{
+    margin:0;
+    padding:0;
+    border:0;
+    box-sizing:border-box;
+}
+
+html{
+    font-family: Arial, sans-serif;
+}
+
+a{
+    text-decoration:none;
+}
+
+/********************************/
+/*           FORM CSS           */
+/********************************/
+
+input, textarea, select, button, .button{
+    border:1px solid #555;
+    padding:6px;
+}
+
+button, .button{
+    cursor:pointer;
+    transition:all 200ms ease-in-out;
+}
+
+/******************************/
+/*         POPUP CSS          */
+/******************************/
+
+.popup{
+    width:96%;
+    max-width:800px;
+    height:80px;
+    position:absolute;
+    top:-90px;
+    left:0;
+    right:0;
+    margin:0 auto;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    text-align:center;
+    font-weight:bold;
+    border:2px solid #333;
+    animation:fadeinout 4s 1;
+    z-index:10;
+}
+
+.error{
+    background:#fc8189;
+}
+
+.message{
+    background:#91f298;
+}
+
+@keyframes fadeinout{
+  from {top:-90px;}
+  10%  {top:0}
+  90%  {top:0}
+  to   {top:-90px;}
+}
+
+/********************************/
+/*        Responsive CSS        */
+/********************************/
+
+@media all and (max-width: 700px){}

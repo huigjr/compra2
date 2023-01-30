@@ -1,0 +1,26 @@
+{
+  "name": "huigjr/roadrunner",
+  "type": "project",
+  "license": "proprietary",
+  "minimum-stability": "stable",
+  "authors": [
+    {
+      "name": "Huig van der Luijt",
+      "email": "huigjr@gmail.com"
+    }
+  ],
+  "require": {
+    "php": ">=7.0",
+    "ext-pdo": "*"
+  },
+  "autoload": {
+    "classmap": [
+      "controllers/",
+      "models/",
+      "core/"
+    ],
+    "files": [
+      "config/config.php"
+    ]
+  }
+}

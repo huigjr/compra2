@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="EN">
+<head>
+	<title>Login | Roadrunner Framework</title>
+    <meta charset="UTF-8">
+	<base href="/" target="_self">
+	<meta name="robots" content="noindex,nofollow">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="assets/css/style.css" type="text/css">
+</head>
+<body>
+
+<?=$notification?>
+
+<main>
+<?php if($heartbeat):?>
+            <form method="POST">
+                <label>Username<input type="text" name="username"></label>
+                <label>Password<input type="password" name="password"></label>
+                <button type="submit">login</button>
+            </form>
+<?php else:?>
+            <p>Something went wrong. Please refresh the page and try again.</p>
+<?php endif;?>
+</main>
+
+<footer>&copy; 2023 | <?=$_SERVER['HTTP_HOST']?> | <?=$debug?></footer>
+
+<script>
+window.addEventListener('touchstart', () => {fetch('/heartbeat')}, {once: true});
+window.addEventListener('mousemove', () => {fetch('/heartbeat')}, {once: true});
+</script>
+
+</body>
+</html>
