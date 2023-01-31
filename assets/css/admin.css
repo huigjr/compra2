@@ -10,7 +10,7 @@
 }
 
 html{
-    font-family: Arial, sans-serif;
+    font-family:Quicksand, Arial, sans-serif;
     background:#eee;
 }
 
@@ -24,11 +24,17 @@ nav{
     left:0;
     width:200px;
     height:100vh;
-    background:#fc037f;
+    background:#e74c3c;
     color:#fff;
     display:flex;
     flex-direction:column;
     align-items:center;
+    box-shadow:2px 0px 3px #999;
+}
+
+nav h1{
+    margin:20px 0;
+    text-shadow:1px 1px 2px #000;
 }
 
 nav a{
@@ -46,7 +52,7 @@ nav a{
 }
 
 nav a:hover{
-    background:#c40062;
+    background:#c0392b;
 }
 
 main{
@@ -59,6 +65,97 @@ footer{
     font-size:11px;
     color:#bbb;
     text-align:center;
+}
+
+/*******************************/
+/*          ADMIN CSS          */
+/*******************************/
+
+.adminsection{
+    width:96%;
+    margin:20px auto;
+    background:#f8f8f8;
+    border:1px solid #bbb;
+    border-radius:8px;
+    box-shadow:0px 0px 3px #bbb;
+}
+
+.sectionheader{
+    background:linear-gradient(0deg, #e74c3c, #ff7466);
+    padding:10px 20px;
+    border-top-left-radius:8px;
+    border-top-right-radius:8px;
+    border-bottom:1px solid #bbb;
+    display:flex;
+    justify-content:space-between;
+}
+
+.sectionheader p{
+    color:#fff;
+    font-weight:bold;
+    font-size:14px;
+    text-transform:uppercase;
+    text-shadow:0 0 2px #000;
+}
+
+.sectioncontent{
+    padding:20px;
+}
+
+.sectioncontent td{
+    font-size:15px;
+}
+
+.sectioncontent form{
+    width:100%;
+    max-width:500px;
+}
+
+.sectioncontent input, .sectioncontent button, .sectioncontent label, .sectioncontent textarea{
+    width:100%;
+}
+
+.sectioncontent input, .sectioncontent textarea, .sectioncontent select{
+    margin-bottom:16px;
+}
+
+.sectioncontent textarea{
+    height:140px;
+}
+
+/******************************/
+/*         TABLE CSS          */
+/******************************/
+
+table{
+    width:100%;
+    border-collapse:collapse;
+}
+
+tr:nth-child(odd){}
+tr:not(:last-child){}
+
+tr{
+    border-top:1px solid #ccc;
+}
+
+tr:hover{
+    background:#eee;
+}
+
+td{
+    padding:3px;
+}
+
+td:last-child{
+    text-align:right;
+    width:100px;
+}
+
+td a{
+    color:#000;
+    font-size:20px;
+    margin:0 6px;
 }
 
 /********************************/
@@ -111,6 +208,15 @@ button, .button{
   10%  {top:0}
   90%  {top:0}
   to   {top:-90px;}
+}
+
+/********************************/
+/*           FONT CSS           */
+/********************************/
+
+@font-face {
+    font-family:Quicksand;
+    src:url("../fonts/Quicksand.woff2");
 }
 
 /********************************/

@@ -9,5 +9,5 @@ include 'vendor/autoload.php';
 
 $router = new Router();
 $page = $router->controller->getPage();
-$page->debug = (round((microtime(true) - $starttime) * 100000) / 100) . ' ms - ' . round(memory_get_peak_usage() / 1024) . 'kb';
+$page->debug = (round((microtime(true) - $starttime) * 100000) / 100) . ' ms - ' . round(memory_get_peak_usage(true) / 1024) . 'kb';
 echo $page;
