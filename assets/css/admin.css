@@ -168,8 +168,13 @@ input, textarea, select, button, .button{
 }
 
 button, .button{
+    background:#2ecc71;
     cursor:pointer;
     transition:all 200ms ease-in-out;
+}
+
+button:hover, .button:hover{
+    background:#27ae60;
 }
 
 /******************************/

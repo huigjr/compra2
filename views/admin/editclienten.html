@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="NL">
+<head>
+	<title>Admin | Compra</title>
+    <meta charset="UTF-8">
+	<base href="/" target="_self">
+    <meta name="robots" content="noindex,nofollow">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="assets/css/admin.css" type="text/css">
+</head>
+<body>
+
+<nav>
+<h1>Compra</h1>
+<?=$navigation?>
+</nav>
+
+<main>
+    <section class="adminsection">
+        <div class="sectionheader"><p>Producten</p></div>
+        <div class="sectioncontent">
+            <table id="table">
+<?php foreach($list() as $item):?>
+<tr>
+    <td><?=$item['invoiceline']?></td>
+    <td><?=$item['price']?></td>
+    <td>
+        <a title="Edit" href="/admin/<?=$entity?>/edit/<?=$item['clientid']?>">✎</a>
+        <a title="Delete" href="/admin/<?=$entity?>/delete/<?=$item['clientid']?>" onclick="return confirm('Are you sure you want to delete <?=$item['firstname']?> <?=$item['lastname']?>?')">🗑</a>
+    </td>
+</tr>
+<?php endforeach;?>
+            </table>
+        </div>
+    </section>
+    <section class="adminsection">
+        <div class="sectionheader"><p><?=empty($email) ? 'New client' : 'Edit: '.$email?></p></div>
+        <div class="sectioncontent">
+            <form method="POST">
+                <input type="hidden" name="clientid" value="<?=$reviewid ?? null?>">
+                <label>Email<input type="text" name="email" placeholder="Email" value="<?=$email ?? null?>"></label>
+                <label>Wachtwoord<input type="text" name="password" placeholder="Wachtwoord" value="<?=$password ?? null?>"></label>
+                <label>Voornaam<input type="text" name="firstname" placeholder="Voornaam" value="<?=$firstname ?? null?>"></label>
+                <label>Achternaam<input type="text" name="lastname" placeholder="Achternaam" value="<?=$lastname ?? null?>"></label>
+                <button type="submit">Opslaan</button>
+            </form>
+    </section>
+    <footer>&copy; 2023 | <?=$_SERVER['HTTP_HOST']?> | <?=$debug?></footer>
+</main>
+
+</body>
+</html>
