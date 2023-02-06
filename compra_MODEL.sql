@@ -90,6 +90,24 @@ CREATE TABLE IF NOT EXISTS `services` (
 -- --------------------------------------------------------
 
 --
+-- Tabelstructuur voor tabel `domains`
+--
+
+CREATE TABLE IF NOT EXISTS `domains` (
+  `domainid` smallint(5) UNSIGNED NOT NULL AUTO_INCREMENT,
+  `userid` smallint(5) UNSIGNED NOT NULL,
+  `domainname` varchar(32) DEFAULT NULL,
+  `supplier` varchar(16) DEFAULT NULL,
+  `renew` tinyint(1) DEFAULT NULL,
+  `startdate` date,
+  `enddate` date,
+  `renewdate` date,
+  PRIMARY KEY (`domainid`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci AUTO_INCREMENT=1;
+
+-- --------------------------------------------------------
+
+--
 -- Tabelstructuur voor tabel `products`
 --
 
@@ -97,6 +115,7 @@ CREATE TABLE IF NOT EXISTS `products` (
   `productid` smallint(5) UNSIGNED NOT NULL AUTO_INCREMENT,
   `userid` smallint(5) UNSIGNED NOT NULL,
   `type` tinyint(3) UNSIGNED DEFAULT NULL,
+  `typeid` smallint(5) UNSIGNED NOT NULL,
   `invoiceline` varchar(64) DEFAULT NULL,
   `startdate` date DEFAULT NULL,
   `enddate` date DEFAULT NULL,

@@ -31,13 +31,15 @@
 </tr>
 <?php endforeach;?>
             </table>
+            <br>
+            <a class="button" href="/admin/domeinen/new/<?=$clientid?>">Registreer domein</a>
         </div>
     </section>
     <section class="adminsection">
         <div class="sectionheader"><p><?=empty($email) ? 'New client' : 'Edit: '.$email?></p></div>
         <div class="sectioncontent">
             <form method="POST">
-                <input type="hidden" name="clientid" value="<?=$reviewid ?? null?>">
+                <input type="hidden" name="clientid" value="<?=$clientid ?? null?>">
                 <label>Email<input type="text" name="email" placeholder="Email" value="<?=$email ?? null?>"></label>
                 <label>Wachtwoord<input type="text" name="password" placeholder="Wachtwoord" value="<?=$password ?? null?>"></label>
                 <label>Voornaam<input type="text" name="firstname" placeholder="Voornaam" value="<?=$firstname ?? null?>"></label>

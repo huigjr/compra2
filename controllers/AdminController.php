@@ -6,8 +6,9 @@ class AdminController extends BaseController
     protected $accesslevel = 2;
     
     const MODELS = [
-        'paginas'   => ['model' => 'PageModel',    'accesslevel' => 2, 'nav' => true],
-        'clienten'   => ['model' => 'ClientModel',    'accesslevel' => 2, 'nav' => true],
+        'paginas'  => ['model' => 'PageModel',   'accesslevel' => 2, 'nav' => true],
+        'clienten' => ['model' => 'ClientModel', 'accesslevel' => 2, 'nav' => true],
+        'domeinen' => ['model' => 'DomainModel', 'accesslevel' => 2, 'nav' => true],
     ];
 
     public function init()
@@ -30,7 +31,7 @@ class AdminController extends BaseController
     
     private function list($entity)
     {
-    $this->view = "{$entity}list.html";
+        $this->view = "{$entity}list.html";
         $this->di->Page->title = ucfirst($entity);
         $this->di->Page->entity = $entity;
         $model = $this->getModel($entity);
@@ -39,6 +40,8 @@ class AdminController extends BaseController
     
     private function new($entity, $parentid = null)
     {
+        $this->view = "edit{$entity}.html";
+        if($parentid) $this->di->Page->clientid = $parentid;
         $model = $this->post($entity, 'create', $parentid);
         $model->new();
     }

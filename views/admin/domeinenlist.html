@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="NL">
+<head>
+	<title>Admin | Compra</title>
+    <meta charset="UTF-8">
+	<base href="/" target="_self">
+    <meta name="robots" content="noindex,nofollow">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="assets/css/admin.css" type="text/css">
+</head>
+<body>
+
+<nav>
+<h1>Compra</h1>
+<?=$navigation?>
+</nav>
+
+<main>
+    <section class="adminsection">
+        <div class="sectionheader">
+            <p><?=$title?></p>
+            <a href="/admin/<?=$entity?>/new">+</a>
+        </div>
+        <div class="sectioncontent">
+            <input id="filter" type="text" placeholder="Filter">
+            <table id="table">
+<?php foreach($list() as $item):?>
+                <tr>
+                    <td><?=$item['domainname']?></td>
+                    <td>
+                        <a title="Edit" href="/admin/<?=$entity?>/edit/<?=$item['domainid']?>">🔗</a>
+                    </td>
+                </tr>
+<?php endforeach;?>
+            </table>
+        </div>
+    </section>
+    <footer>&copy; 2023 | <?=$_SERVER['HTTP_HOST']?> | <?=$debug?></footer>
+</main>
+
+<script>
+let filter = document.getElementById("filter");
+let rows = document.getElementById("table").getElementsByTagName("tr");
+filter.addEventListener("input", function(){
+    for(i=0;i<rows.length;i++){
+        content = rows[i].getElementsByTagName("td")[0].textContent.toLowerCase();
+        if(content.includes(filter.value.toLowerCase())){
+            rows[i].style.display = "";
+        } else {
+            rows[i].style.display = "none";
+        }
+    }
+});
+</script>
+
+</body>
+</html>
