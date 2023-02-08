@@ -51,4 +51,9 @@ abstract class BaseModel
         $where = $id ? " WHERE {$this->id} = '$id'" : '';
         $this->page->partial(($table ?: 'list'), "SELECT * FROM " . ($table ?: $this->table) . $where);
     }
+    
+    public function getId()
+    {
+        return $this->id;
+    }
 }

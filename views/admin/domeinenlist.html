@@ -10,6 +10,8 @@
 </head>
 <body>
 
+<?=$notification?>
+
 <nav>
 <h1>Compra</h1>
 <?=$navigation?>
@@ -24,12 +26,18 @@
         <div class="sectioncontent">
             <input id="filter" type="text" placeholder="Filter">
             <table id="table">
+                <tr>
+                    <th>Domeinnaam</th>
+                    <th>Register</th>
+                    <th>Client</th>
+                    <th>Renewdatum</th>
+                </tr>
 <?php foreach($list() as $item):?>
                 <tr>
-                    <td><?=$item['domainname']?></td>
-                    <td>
-                        <a title="Edit" href="/admin/<?=$entity?>/edit/<?=$item['domainid']?>">🔗</a>
-                    </td>
+                    <td><a href="/admin/<?=$entity?>/edit/<?=$item['domainid']?>"><?=$item['domainname']?></a></td>
+                    <td><?=$item['supplier']?></td>
+                    <td><a href="/admin/clienten/edit/<?=$item['clientid']?>"><?=$item['firstname']?> <?=$item['lastname']?> (<?=$item['organisation']?>)</a></td>
+                    <td><?=$item['renewdate']?></td>
                 </tr>
 <?php endforeach;?>
             </table>
@@ -42,15 +50,29 @@
 let filter = document.getElementById("filter");
 let rows = document.getElementById("table").getElementsByTagName("tr");
 filter.addEventListener("input", function(){
-    for(i=0;i<rows.length;i++){
-        content = rows[i].getElementsByTagName("td")[0].textContent.toLowerCase();
-        if(content.includes(filter.value.toLowerCase())){
+    let check = filter.value.toLowerCase();
+    for(i=1;i<rows.length;i++){
+        content1 = rows[i].getElementsByTagName("td")[0].textContent.toLowerCase();
+        content2 = rows[i].getElementsByTagName("td")[1].textContent.toLowerCase();
+        content3 = rows[i].getElementsByTagName("td")[2].textContent.toLowerCase();
+        if(content1.includes(check) || content2.includes(check) || content3.includes(check)){
             rows[i].style.display = "";
         } else {
             rows[i].style.display = "none";
         }
     }
 });
+
+const getCellValue = (tr, idx) => tr.children[idx].innerText || tr.children[idx].textContent;
+const comparer = (idx, asc) => (a, b) => ((v1, v2) => 
+    v1 !== '' && v2 !== '' && !isNaN(v1) && !isNaN(v2) ? v1 - v2 : v1.toString().localeCompare(v2)
+    )(getCellValue(asc ? a : b, idx), getCellValue(asc ? b : a, idx));
+document.querySelectorAll('th').forEach(th => th.addEventListener('click', (() => {
+    const table = th.closest('table');
+    Array.from(table.querySelectorAll('tr:nth-child(n+2)'))
+        .sort(comparer(Array.from(th.parentNode.children).indexOf(th), this.asc = !this.asc))
+        .forEach(tr => table.appendChild(tr) );
+})));
 </script>
 
 </body>

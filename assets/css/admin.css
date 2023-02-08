@@ -133,9 +133,13 @@ table{
 }
 
 tr:nth-child(odd){}
-tr:not(:last-child){}
 
-tr{
+th:not(:last-child){
+    text-align:left;
+    cursor:pointer;
+}
+
+tr:not(:first-child){
     border-top:1px solid #ccc;
 }
 
@@ -143,19 +147,17 @@ tr:hover{
     background:#eee;
 }
 
-td{
-    padding:3px;
+td, th{
+    padding:3px 4px;
 }
 
-td:last-child{
+td:last-child, th:last-child{
     text-align:right;
     width:100px;
 }
 
 td a{
-    color:#000;
-    font-size:20px;
-    margin:0 6px;
+    color:#2980b9;
 }
 
 /********************************/

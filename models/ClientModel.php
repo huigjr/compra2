@@ -7,7 +7,7 @@ class ClientModel extends BaseModel
 
     public function read($value, $column = null)
     {
-        $this->page->partial('list', "SELECT * FROM `products`");
+        $this->page->partial('list', "SELECT * FROM `products` WHERE `clientid` = {$this->parentid}");
         parent::read($value);
     }
 }

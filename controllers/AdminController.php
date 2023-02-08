@@ -46,10 +46,10 @@ class AdminController extends BaseController
         $model->new();
     }
 
-    private function update($entity, $url, $parentid = null)
+    private function update($entity, $id)
     {
-        $model = $this->post($entity, 'update', $parentid);
-        $model->read($url, 'url');
+        $model = $this->post($entity, 'update', $id);
+        $model->read($id, $model->getId());
     }
 
     private function delete($entity, $url)
@@ -78,8 +78,8 @@ class AdminController extends BaseController
     {
         $this->view = "edit$entity.html";
         $model = $this->getModel($entity);
+        if($parentid) $model->parentid = $parentid;
         if(!empty($_POST)){
-            if($parentid) $model->parentid = $parentid;
             if($model->$method($_POST)) $this->session->message = 'Saved successfully';
             else $this->session->error = 'Failed to save';
             RedirectHelper::redirect($model->return ?? "/admin/$entity");

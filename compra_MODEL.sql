@@ -67,7 +67,6 @@ CREATE TABLE IF NOT EXISTS `tlds` (
   `supplier` varchar(16) DEFAULT NULL,
   `months` tinyint(3) UNSIGNED DEFAULT 12,
   `price` decimal(6,2) DEFAULT NULL,
-  `invoiceline` varchar(64) DEFAULT NULL,
   PRIMARY KEY (`tldid`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci AUTO_INCREMENT=1;
 
@@ -95,7 +94,7 @@ CREATE TABLE IF NOT EXISTS `services` (
 
 CREATE TABLE IF NOT EXISTS `domains` (
   `domainid` smallint(5) UNSIGNED NOT NULL AUTO_INCREMENT,
-  `userid` smallint(5) UNSIGNED NOT NULL,
+  `clientid` smallint(5) UNSIGNED NOT NULL,
   `domainname` varchar(32) DEFAULT NULL,
   `supplier` varchar(16) DEFAULT NULL,
   `renew` tinyint(1) DEFAULT NULL,
@@ -113,7 +112,7 @@ CREATE TABLE IF NOT EXISTS `domains` (
 
 CREATE TABLE IF NOT EXISTS `products` (
   `productid` smallint(5) UNSIGNED NOT NULL AUTO_INCREMENT,
-  `userid` smallint(5) UNSIGNED NOT NULL,
+  `clientid` smallint(5) UNSIGNED NOT NULL,
   `type` tinyint(3) UNSIGNED DEFAULT NULL,
   `typeid` smallint(5) UNSIGNED NOT NULL,
   `invoiceline` varchar(64) DEFAULT NULL,

@@ -10,6 +10,8 @@
 </head>
 <body>
 
+<?=$notification?>
+
 <nav>
 <h1>Compra</h1>
 <?=$navigation?>
@@ -25,7 +27,11 @@
             <input id="filter" type="text" placeholder="Filter">
             <table id="table">
 <?php foreach($list() as $item):?>
-<tr><td><?=$item['firstname']?> <?=$item['lastname']?></td><td><?=$item['organisation']?></td><td><a title="Edit" href="/admin/<?=$entity?>/edit/<?=$item['clientid']?>">✎</a><a title="Delete" href="/admin/<?=$entity?>/delete/<?=$item['clientid']?>" onclick="return confirm('Are you sure you want to delete <?=$item['firstname']?> <?=$item['lastname']?>?')">🗑</a></td></tr>
+<tr>
+<td><?=$item['firstname']?> <?=$item['lastname']?></td>
+<td><?=$item['organisation']?></td>
+<td><a title="Edit" href="/admin/<?=$entity?>/edit/<?=$item['clientid']?>">🔗</a></td>
+</tr>
 <?php endforeach;?>
             </table>
         </div>
